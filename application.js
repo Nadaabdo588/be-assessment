@@ -5,7 +5,7 @@ require('dotenv').config();
 const app = express();
 
 //DB connection
-const dbConnector= new DBConnector();
+const dbConnector = new DBConnector();
 dbConnector.connect()
     .then(result => console.log("MongoDB is now connected"))
     .catch(err => console.log(err));
@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 })
 
 //Set development port
-const port = process.env.DEV_PORT||3000;
+const port = process.env.DEV_PORT || 3000;
 app.listen(port, () => {
 
     console.log(`Example app listening at http://localhost:${port}`)
