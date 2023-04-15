@@ -20,6 +20,14 @@ const UserSchema= new mongoose.Schema({
     email:{type:String,
         required:true
     },  
+    verfication_code:{
+        type: String,
+        required: true,
+    },
+    verified:{
+        type: Boolean,
+        default: false,
+    }
 });
 
 

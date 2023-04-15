@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
+mongoose.set('debug', true);
 const MongoURI = process.env.MONGO_URI;
 class DBConnector {
     constructor(uri) {

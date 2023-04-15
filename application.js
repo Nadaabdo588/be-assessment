@@ -1,5 +1,4 @@
 const express = require('express');
-const connect = require('./database/dbConnection');
 const DBConnector = require('./database/dbConnection');
 require('dotenv').config();
 const app = express();
@@ -10,10 +9,13 @@ dbConnector.connect()
     .then(result => console.log("MongoDB is now connected"))
     .catch(err => console.log(err));
 
-//Dummy test
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+
+// defining the middleware functions to parse the body of the requests
+app.use(express.json());
+app.use(express.urlencoded({extended : false}));
+
+// defining paths for login & registeration
+app.use('/api/auth', require('./routes/api/authentication'));
 
 //Set development port
 const port = process.env.DEV_PORT || 3000;
