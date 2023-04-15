@@ -25,15 +25,15 @@ const CheckSchema= new mongoose.Schema({
         type:String,
     },
     timeout: {
-        type:number,
+        type:Number,
         default: 5,
     }, 
     interval: {
-        type:number,
+        type:Number,
         default: 10,
     },  
     threshold: {
-        type:number,
+        type:Number,
         default:1,
     },
     authentication: {

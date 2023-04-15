@@ -12,10 +12,12 @@ dbConnector.connect()
 
 // defining the middleware functions to parse the body of the requests
 app.use(express.json());
-app.use(express.urlencoded({extended : false}));
+app.use(express.urlencoded({ extended: false }));
 
 // defining paths for login & registeration
 app.use('/api/auth', require('./routes/api/authentication'));
+// defining paths for check operations
+app.use('/api/checks', require('./routes/api/check'));
 
 //Set development port
 const port = process.env.DEV_PORT || 3000;
