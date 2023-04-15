@@ -4,7 +4,7 @@ authentication-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQzY
 
 {
     "user_id":"643a265de3f2ae65a694dcf8",
-    "name":"check1",
+    "name":"check4",
     "url":"dummyurl.com",
     "protocol":"https"
 }

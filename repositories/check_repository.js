@@ -1,6 +1,6 @@
-const dotenv = require('dotenv');
 const sendMail = require("../services/nodemailer_service");
 const Check = require('../models/Check');
+const Report = require("../models/Report");
 
 async function getCheckByID(req, res) {
     const check_id = req.params.check_id;
@@ -30,9 +30,18 @@ async function createCheck(req, res) {
 
         // Job scheduling to be added
         // Report to be created
-
         //Create the new check
         const newCheck = await Check.create(check);
+        Report.create({
+            check_id: newCheck._id,
+            status:"up",
+            availability:0,
+            outages:0,
+            downtime:0,
+            uptime:0,
+            response_time:0,
+            history:[],
+        })
         return res.status(200).json({ msg: "Check created", check: newCheck });
 
     }

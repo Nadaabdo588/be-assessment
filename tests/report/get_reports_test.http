@@ -1,0 +1,3 @@
+GET http://localhost:3000/api/reports/643a265de3f2ae65a694dcf8 HTTP/1.1
+content-type: application/json
+authentication-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQzYTI2NWRlM2YyYWU2NWE2OTRkY2Y4IiwiZW1haWwiOiJuYWRhYWJkbzU4OEBnbWFpbC5jb20iLCJpYXQiOjE2ODE1MzI2OTl9.YWyS-6ErR7yOdjl9RWHWwaE8_Jz0TlTm2cmkV0l-Uzw

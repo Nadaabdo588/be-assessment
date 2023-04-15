@@ -18,6 +18,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api/auth', require('./routes/api/authentication'));
 // defining paths for check operations
 app.use('/api/checks', require('./routes/api/check'));
+// defining paths for report operations
+app.use('/api/reports', require('./routes/api/report'));
 
 //Set development port
 const port = process.env.DEV_PORT || 3000;

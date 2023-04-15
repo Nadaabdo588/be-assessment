@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const ReportSchema = new mongoose.Schema({
-    check_id:{
+    check_id: {
         type: mongoose.ObjectId,
-        required:true,
+        required: true,
         unique: true
     },
     status: {
@@ -31,12 +31,12 @@ const ReportSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    history: {
-        type: Date,
-        required: true
-    }
-
-
+    history: [
+        {
+            check_name: String,
+            date: Date
+        }
+    ]
 });
 
 
