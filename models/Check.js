@@ -53,7 +53,7 @@ const CheckSchema= new mongoose.Schema({
         of: String
     },
     assert: {
-        type: String
+        type: Number
     },
     tags:{
         type: Array,

@@ -58,7 +58,9 @@ async function register(req, res) {
 
             });
             //Send verfication mail to the user
-            sendMail(verficationCode, user);
+            const mailText = `Thank you for your registeration. Please verify your email using the following verfication code: ` + verficationCode;
+
+            sendMail(mailText, user);
             // Generate token for the user
             const token = await jwt.sign(
                 { user_id: user._id, email },

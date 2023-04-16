@@ -1,7 +1,6 @@
 const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
-async function sendMail(verficationCode, receiver) {
-    const text = `Thank you for your registeration. Please verify your email using the following verfication code: ` + verficationCode;
+async function sendMail(text, receiver) {
 
     let transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
@@ -18,7 +17,6 @@ async function sendMail(verficationCode, receiver) {
         to: `${receiver.email}`, // list of receivers
         subject: "Email verification", // Subject line
         text: text, // plain text body
-
     });
 
 }

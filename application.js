@@ -1,5 +1,6 @@
 const express = require('express');
 const DBConnector = require('./database/dbConnection');
+const { startAllTasks } = require('./services/scheduler');
 require('dotenv').config();
 const app = express();
 
@@ -23,8 +24,10 @@ app.use('/api/reports', require('./routes/api/report'));
 
 //Set development port
 const port = process.env.DEV_PORT || 3000;
+
+//Start url checking tasks
+startAllTasks();
+
 app.listen(port, () => {
-
-    console.log(`Example app listening at http://localhost:${port}`)
-
+    console.log(`Example app listening at http://localhost:${port}`);
 })

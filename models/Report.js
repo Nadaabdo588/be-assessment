@@ -31,9 +31,23 @@ const ReportSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    total_response_time:
+    {
+        type: Number,
+        default:0
+    },
+    total_requests:
+    {
+        type: Number,
+        default:0,
+    },
+    succ_failures:{
+        type: Number,
+        default:0,
+    },
     history: [
         {
-            check_name: String,
+            info: String,
             date: Date
         }
     ]
