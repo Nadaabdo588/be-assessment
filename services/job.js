@@ -71,15 +71,27 @@ async function updateCheckReport(response, check) {
         const newAvailability = newUpTime / (newDownTime + newUpTime) * 100;
         const newHistory = report.history;
         const newSuccFailures = response.error ? report.succ_failures + 1 : 0;
-        if (newSuccFailures > check.threshold) {
-            const user = await User.findById(check.user_id.toString());
-            if (user) {
+        //Notify user 
+        const user = await User.findById(check.user_id.toString());
+        if (user) {
+            //Notify user if the number of failures exceeds the check threshold
+            if (newSuccFailures > check.threshold) {
                 const mailText = 'Alert! Requests to this URL: ' + check.url + ' have faild '
                     + newSuccFailures + ' times in a row';
                 sendMail(mailText, user);
                 newSuccFailures = 0;
             }
+            //Notify user when the server status change
+            if (response.error && report.status == 200) {
+                const mailText = 'The server for the URL: ' + check.url + 'is  now down!'
+                sendMail(mailText, user);
+            }
+            if (!response.error && report.status != 200) {
+                const mailText = 'The server for the URL: ' + check.url + 'is  now up!'
+                sendMail(mailText, user);
+            }
         }
+
         newHistory.push({ "info": (response.error), "date": new Date(response.config.headers['start_time']) });
         const updatedReport = await Report.findOneAndUpdate({ check_id: check._id.toString() },
             {

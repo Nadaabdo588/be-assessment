@@ -7,7 +7,7 @@ const ReportSchema = new mongoose.Schema({
         unique: true
     },
     status: {
-        type: String,
+        type: Number,
         required: true
     },
     availability: {
